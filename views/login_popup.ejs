@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>경로 이미지 올리는 팝업</title>
+</head>
+<body>
+<form action="/admin/signup" method="post">
+    <table>
+        <tr>
+            <td><h2>관리자 이메일</h2>
+                <input type="text" name="adminEmail" id="adminEmail">
+            </td>
+        </tr>
+        <hr/>
+        <tr>
+            <td><h4>비밀번호</h4>
+                <input type="password" name="adminPassword"
+                       id="adminPassword"></td>
+        </tr>
+        <tr>
+
+            <td><input type="submit" value="관리자 로그인"></td>
+            <hr/>
+        </tr>
+
+    </table>
+</form>
+</body>
+<script>
+    /*    let firebase = require("firebase");
+        firebase.auth().signInWithEmailAndPassword(email,password)
+            .catch(function (error) {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                if(errorCode == 'auth/wrong-password'){
+                    alert("비밀번호가 틀립니다.");
+                } else {
+                    alert(errorMessage);
+                }
+            })*/
+</script>
+</html>

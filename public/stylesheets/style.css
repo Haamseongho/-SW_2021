@@ -1,0 +1,120 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+<!--
+ID
+
+-->
+#box {
+  position: relative;
+  height: auto;
+  margin: auto;
+  background-color: #00B7FF;
+}
+
+#top {
+  height: 100px;
+  position: relative;
+  background-color: #c3d9ff;
+}
+
+#bottom {
+  background-color: #c3d9ff;
+  height: 70px;
+  position: relative;
+  clear: both;
+<!-- 상단의 흐름을 한번 끊어주기 위해 clear를 해준다 . --> float: left;
+<!-- 새로운 흐름을 지정해줘야 깨지지 않는다 -->
+}
+
+#mn_container {
+  width: 940px;
+  margin: 0px auto;
+  padding: 20px;
+  border: 1px solid #bcbcbc
+}
+
+#mn_header {
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #bcbcbc;
+}
+
+<!--
+class
+
+-->
+>
+.p_top {
+  color: #ffffff;
+}
+
+a {
+  color: #00B7FF;
+}
+
+ol.det_ol {
+  background: #ff9999;
+  padding: 20px;
+}
+
+ul.det_ul {
+  background: #3399ff;
+  padding: 20px;
+}
+
+ol.det_ol li {
+  background: #ffe5e5;
+  padding: 5px;
+  margin-left: 35px;
+}
+
+ul li {
+  background: #cce5ff;
+  margin: 5px;
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+.container-fluid {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+

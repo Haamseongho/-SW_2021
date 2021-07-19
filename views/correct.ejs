@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html xmlns:height="http://www.w3.org/1999/xhtml">
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap core CSS -->
+
+
+    <!-- Custom styles for this template -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/css/bootstrap-select.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
+
+</head>
+<style>
+    select {
+        width: 200px; /* 원하는 너비설정 */
+        padding: .8em .5em; /* 여백으로 높이 설정 */
+        font-family: inherit; /* 폰트 상속 */
+        background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%; /* 네이티브 화살표 대체 */
+        border: 1px solid #999;
+        border-radius: 0px; /* iOS 둥근모서리 제거 */
+        -webkit-appearance: none; /* 네이티브 외형 감추기 */
+        -moz-appearance: none;
+        appearance: none;
+    }
+
+    .selectbox label {
+        position: absolute;
+        top: 1px; /* 위치정렬 */
+        left: 5px; /* 위치정렬 */
+        padding: .8em .5em; /* select의 여백 크기 만큼 */
+        color: #999;
+        z-index: -1; /* IE8에서 label이 위치한 곳이 클릭되지 않는 것 해결 */
+    }
+
+    .selectbox select {
+        width: 100%;
+        height: auto; /* 높이 초기화 */
+        line-height: normal; /* line-height 초기화 */
+        font-family: inherit; /* 폰트 상속 */
+        padding: .8em .5em; /* 여백과 높이 결정 */
+        border: 0;
+        opacity: 0; /* 숨기기 */
+        filter: alpha(opacity=0); /* IE8 숨기기 */
+        -webkit-appearance: none; /* 네이티브 외형 감추기 */
+        -moz-appearance: none;
+        appearance: none;
+    }
+
+
+</style>
+<body>
+<div id="box">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container" id="mn_header">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"> <%= data[0].SubNm %> 수정페이지</a>
+            </div>
+        </div>
+    </nav>
+    <br/>
+    <br/>
+    <div class="container-fluid">
+        <% if(data.Type === 1){
+        %>
+        <div>
+            <table class="table table-striped table-bordered table-hover text-center"
+                   id="myUpdateElevTable" cellpadding="3">
+                <th colspan="6" width="100%">엘레베이터 정보 수정</th>
+                <% for(var i = 0;i < data[0].Elevator.length;i++){
+                %>
+                <tr>
+                    <td><p>위치 수정</p>
+                        <!-- crt : correct -->
+                        <input type="text" name="crtElevLocation<%= i %>" id="crtElevLocation<%= i %>"
+                               value="<%= data[0].Elevator[i].ElevLocation %>"></td>
+                    <td><p>엘리베이터 이름 수정</p>
+                        <!-- crt : correct -->
+                        <input type="text" name="crtElevName<%= i %>" id="crtElevName<%= i %>"
+                               value="<%= data[0].Elevator[i].ElevName %>"></td>
+                </tr>
+                <tr>
+
+                    <td><p>엘리베이터 사용가능여부</p>
+                        <!-- crt : correct -->
+                        <input type="text" name="crtElevUsage<%= i %>" id="crtElevUsage<%= i %>"
+                               value="<%= data[0].Elevator[i].ElevUsage %>"></td>
+
+                    <td><p>엘리베이터 이동방향</p>
+                        <!-- crt : correct -->
+                        <input type="text" name="crtElevDir<%= i %>" id="crtElevDir<%= i %>"
+                               value="<%= data[0].Elevator[i].ElevDir %>"></td>
+
+
+                </tr>
+
+                <% } %>
+            </table>
+        </div>
+        <%
+        } else if(data.Type === 2){
+        %>
+        <div>
+            <table class="table table-striped table-bordered table-hover text-center"
+                   id="myUpdateLiftTable" cellpadding="3">
+                <th colspan="6" width="100%">리프트 정보 수정</th>
+                <% for(var i = 0;i < data[0].Lift.length;i++){
+                %>
+                <tr>
+                    <td><p>위치 수정</p>
+                        <!-- crt : correct -->
+                        <input type="text" name="crtLiftLocation<%= i %>" id="crtLiftLocation<%= i %>"
+                               value="<%= data[0].Lift[i].LiftLocation %>"></td>
+                    <td><p>리프트 이름 수정</p>
+                        <!-- crt : correct -->
+                        <input type="text" name="crtLiftName<%= i %>" id="crtLiftName<%= i %>"
+                               value="<%= data[0].Lift[i].LiftName %>"></td>
+                </tr>
+                <tr>
+
+                    <td><p>리프트 사용가능여부</p>
+                        <!-- crt : correct -->
+                        <input type="text" name="crtLiftUsage<%= i %>" id="crtLiftUsage<%= i %>"
+                               value="<%= data[0].Lift[i].LiftUsage %>"></td>
+
+                    <td><p>리프트 이동방향</p>
+                        <!-- crt : correct -->
+                        <input type="text" name="crtLiftDir<%= i %>" id="crtLiftDir<%= i %>"
+                               value="<%= data[0].Lift[i].LiftDir %>"></td>
+
+                    <br/>
+                    <hr/>
+                </tr>
+
+                <% } %>
+            </table>
+        </div>
+        <!-- 환승경로 수정 -->
+        <%
+        } else if(data.Type === 3){
+        %>
+        <div>
+            <table class="table table-striped table-bordered table-hover text-center"
+                   id="myUpdateTransDirTable" cellpadding="3">
+                <th colspan="6" width="100%">환승경로 정보 수정</th>
+                <tr>
+                    <td><p>처음 출발위치</p>
+                        <input type="text" name="crtStart" id="crtStart" value="<%= data[0].Direction[0].Start %>">
+                    </td>
+                    <td><p>환승구간 최종 목적지</p>
+                        <input type="text" name="crtDest" id="crtDest" value="<%= data[0].Direction[0].Dest %>">
+                    </td>
+                </tr>
+                <% for(var i = 0;i < data[0].Direction.length;i++){
+                %>
+                <tr>
+                    <td><p>현재위치 수정</p>
+                        <input type="text" name="crtSpot<%= i %>" id="crtSpot<%= i %>"
+                               value="<%= data[0].Direction[i].Spot %>">
+                    </td>
+                    <td><p>이동방향 수정</p>
+                        <!-- crt : correct -->
+                        <input type="text" name="crtTurn<%= i %>" id="crtTurn<%= i %>"
+                               value="<%= data[0].Direction[i].Turn %>"></td>
+                    <td><p>이동거리 수정</p>
+                        <!-- crt : correct -->
+                        <input type="text" name="crtDist<%= i %>" id="crtDist<%= i %>"
+                               value="<%= data[0].Direction[i].Dist %>"></td>
+                </tr>
+                <tr>
+                    <td><p>지형지물 수정</p>
+                        <input type="text" name="crtFeature<%= i %>" id="crtFeature<%= i %>"
+                               value="<%= data[0].Direction[i].Feature %>">
+                    </td>
+                    <td><p>행동 수정</p>
+                        <input type="text" name="crtTodo<%= i %>" id="crtTodo<%= i %>"
+                               value="<%= data[0].Direction[i].Todo %>">
+                    </td>
+                </tr>
+                <tr>
+
+                    <td><p>이동 경로 구체적 설명</p>
+                        <!-- crt : correct -->
+                        <input type="text" name="crtD_Feature_A<%= i %>" id="crtD_Feature_A<%= i %>"
+                               value="<%= data[0].Direction[i].D_Feature_A %>"></td>
+
+                    <td><p>이동시 특이사항</p>
+                        <!-- crt : correct -->
+                        <input type="text" name="crtD_Feature_B<%= i %>" id="crtD_Feature_B<%= i %>"
+                               value="<%= data[0].Direction[i].D_Feature_B %>"></td>
+
+                    <br/>
+                    <hr/>
+                </tr>
+
+                <% } %>
+            </table>
+        </div>
+
+        <%
+        } %>
+
+    </div>
+
+
+    <button id="btnCrtData" class="btn-warning" style="width:100%">데이터 수정</button>
+    <script>
+        $("#btnCrtData").on('click', function () {
+            var type = "<%= data.Type %>"
+
+            if (type == 1) {
+                var elevSize = "<%= data[0].Elevator.length %>"
+                var elevLocArr = new Array();
+                var elevNmArr = new Array();
+                var elevUseArr = new Array();
+                var elevDirArr = new Array();
+                var elevObjectArr = new Array();
+
+                for (var i = 0; i < elevSize; i++) {
+                    var elemLoc = $("#crtElevLocation" + i).val();
+                    var elemName = $("#crtElevName" + i).val();
+                    var elemUsage = $("#crtElevUsage" + i).val();
+                    var elemDir = $("#crtElevDir" + i).val();
+
+                    // 수정사항이 있다면 그 내용을 배열에 푸시하고
+                    // 없다면 기존에 있던 내용을 푸시한다.
+                    // 엘리베이터 위치
+                    if (elemLoc != undefined) {
+                        elevLocArr.push(elemLoc);
+                    }
+
+                    // 엘리베이터 이름
+                    if (elemName != undefined) {
+                        elevNmArr.push(elemName);
+                    }
+
+                    // 엘리베이터 사용여부
+                    if (elemUsage != undefined) {
+                        elevUseArr.push(elemUsage);
+                    }
+                    // 엘리베이터 이동 경로
+                    if (elemDir != undefined) {
+                        elevDirArr.push(elemDir);
+                    }
+                }
+
+                // object
+                for (var i = 0; i < elevSize; i++) {
+                    var elevObject = new Object();
+                    elevObject.ElevLocation = elevLocArr[i];
+                    elevObject.ElevName = elevNmArr[i];
+                    elevObject.ElevUsage = elevUseArr[i];
+                    elevObject.ElevDir = elevDirArr[i];
+
+                    elevObjectArr.push(elevObject);
+                }
+
+                var elevCrtJsonData = JSON.stringify(elevObjectArr);
+                console.log(elevCrtJsonData);
+                $.ajax({
+                    url: "/correct/elevData",
+                    type: "POST",
+                    contentType: "application/x-www-form-urlencoded",
+                    dataType: "json",
+                    data: {
+                        SubNm: "<%= data[0].SubNm %>",
+                        TransferDir: "<%= data[0].TransferDir %>",
+                        Elevator: elevCrtJsonData
+                    }, success: function (data) {
+                        alert("데이터 수정이 완료되었습니다.");
+                        window.location.href = "/detail?" + "SubLine=" + data.value.SubLine + "&SubNm=" + data.value.SubNm
+                            + "&TransferLine=" + data.value.TransferLine + "&TransferDir=" + data.value.TransferDir;
+                    }, error: function (req, status, error) {
+                        alert("error " + error);
+                    }
+                })
+
+                // 리프트 수정
+            } else if (type == 2) {
+                var liftSize = "<%= data[0].Lift.length %>"
+                var liftLocArr = new Array();
+                var liftNmArr = new Array();
+                var liftUseArr = new Array();
+                var liftDirArr = new Array();
+                var liftObjectArr = new Array();
+
+                for (var i = 0; i < liftSize; i++) {
+                    var elemLoc = $("#crtLiftLocation" + i).val();
+                    var elemName = $("#crtLiftName" + i).val();
+                    var elemUsage = $("#crtLiftUsage" + i).val();
+                    var elemDir = $("#crtLiftDir" + i).val();
+
+                    // 수정사항이 있다면 그 내용을 배열에 푸시하고
+                    // 없다면 기존에 있던 내용을 푸시한다.
+                    // 리프트 위치
+                    if (elemLoc != undefined) {
+                        liftLocArr.push(elemLoc);
+                    }
+
+                    // 리프트 이름
+                    if (elemName != undefined) {
+                        liftNmArr.push(elemName);
+                    }
+
+                    // 리프트 사용여부
+                    if (elemUsage != undefined) {
+                        liftUseArr.push(elemUsage);
+                    }
+                    // 리프트 이동 경로
+                    if (elemDir != undefined) {
+                        liftDirArr.push(elemDir);
+                    }
+                }
+
+                // object
+                for (var i = 0; i < liftSize; i++) {
+                    var liftObject = new Object();
+                    liftObject.LiftLocation = liftLocArr[i];
+                    liftObject.LiftName = liftNmArr[i];
+                    liftObject.LiftUsage = liftUseArr[i];
+                    liftObject.LiftDir = liftDirArr[i];
+
+                    liftObjectArr.push(liftObject);
+                }
+
+                var liftCrtJsonData = JSON.stringify(liftObjectArr);
+
+                $.ajax({
+                    url: "/correct/liftData",
+                    type: "POST",
+                    contentType: "application/x-www-form-urlencoded",
+                    dataType: "json",
+                    data: {
+                        SubNm: "<%= data[0].SubNm %>",
+                        TransferDir: "<%= data[0].TransferDir %>",
+                        Lift: liftCrtJsonData
+                    }, success: function (data) {
+                        alert("데이터 수정이 완료되었습니다.");
+                        window.location.href = "/detail?" + "SubLine=" + data.value.SubLine + "&SubNm=" + data.value.SubNm
+                            + "&TransferLine=" + data.value.TransferLine + "&TransferDir=" + data.value.TransferDir;
+                    }, error: function (req, status, error) {
+                        alert("error " + error);
+                    }
+                })
+            } else {
+                var dirSize = "<%= data[0].Direction.length %>"
+                var dirTurnArr = new Array();
+                var dirDistArr = new Array();
+                var dirStart = new Array(); // 환승 출발 지점
+                var dirDest = new Array(); // 환승 최종 목적지
+                var dirSpot = new Array(); // 현재위치
+                var dirFeature = new Array(); // 지형지물
+                var dirTodo = new Array(); // 행동
+                var dirFeatArr = new Array();
+                var dirFeatArr2 = new Array();
+                var dirObjectArr = new Array();
+
+                for (var i = 0; i < dirSize; i++) {
+                    var elemTurn = $("#crtTurn" + i).val();
+                    var elemDist = $("#crtDist" + i).val();
+                    var elemFeatureA = $("#crtD_Feature_A" + i).val();
+                    var elemFeatureB = $("#crtD_Feature_B" + i).val();
+                    var elemStart = $("#crtStart").val();
+                    var elemDest = $("#crtDest").val();
+                    var elemSpot = $("#crtSpot" + i).val();
+                    var elemFeature = $("#crtFeature" + i).val();
+                    var elemTodo = $("#crtTodo"+i).val();
+                    // 수정사항이 있다면 그 내용을 배열에 푸시하고
+                    // 없다면 기존에 있던 내용을 푸시한다.
+                    // 환승경로 방향
+                    if (elemTurn != undefined) {
+                        dirTurnArr.push(elemTurn);
+                    }
+
+                    // 환승경로 거리
+                    if (elemDist != undefined) {
+                        dirDistArr.push(elemDist);
+                    }
+
+                    // 리프트 사용여부
+                    if (elemFeatureA != undefined) {
+                        dirFeatArr.push(elemFeatureA);
+                    }
+                    // 리프트 이동 경로
+                    if (elemFeatureB != undefined) {
+                        dirFeatArr2.push(elemFeatureB);
+                    }
+                    if(elemStart != undefined){
+                        dirStart.push(elemStart);
+                    }
+                    if(elemDest != undefined){
+                        dirDest.push(elemDest);
+                    }
+                    if(elemSpot != undefined){
+                        dirSpot.push(elemSpot);
+                    }
+                    if(elemFeature != undefined){
+                        dirFeature.push(elemFeature);
+                    }
+                    if(elemTodo != undefined){
+                        dirTodo.push(elemTodo);
+                    }
+                }
+
+                // object
+                for (var i = 0; i < dirSize; i++) {
+                    var dirObject = new Object();
+                    dirObject.Turn = dirTurnArr[i];
+                    dirObject.Dist = dirDistArr[i];
+                    dirObject.D_Feature_A = dirFeatArr[i];
+                    dirObject.D_Feature_B = dirFeatArr2[i];
+                    dirObject.Start = dirStart[i];  // 시작
+                    dirObject.Dest = dirDest[i];    // 목적지
+                    dirObject.Spot = dirSpot[i];    // 현재위치
+                    dirObject.Feature = dirFeature[i];  // 지형지물
+                    dirObject.Todo = dirTodo[i]; // 행동
+                    dirObjectArr.push(dirObject);
+                }
+
+                var dirCrtJsonData = JSON.stringify(dirObjectArr);
+
+                $.ajax({
+                    url: "/correct/dirData",
+                    type: "POST",
+                    contentType: "application/x-www-form-urlencoded",
+                    dataType: "json",
+                    data: {
+                        SubNm: "<%= data[0].SubNm %>",
+                        TransferDir: "<%= data[0].TransferDir %>",
+                        Direction: dirCrtJsonData
+                    }, success: function (data) {
+                        alert("데이터 수정이 완료되었습니다.");
+                        window.location.href = "/detail?" + "SubLine=" + data.value.SubLine + "&SubNm=" + data.value.SubNm
+                            + "&TransferLine=" + data.value.TransferLine + "&TransferDir=" + data.value.TransferDir;
+                    }, error: function (req, status, error) {
+                        alert("error " + error);
+                    }
+                })
+            }
+
+        })
+    </script>
+</div>
+</body>
+
+</html>

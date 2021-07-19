@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>무의 역 정보 페이지</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'
+          type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Meta tag Keywords -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8"/>
+    <meta name="keywords"
+          content="Event Coming Soon Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements"
+    />
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- Meta tag Keywords -->
+    <!-- css files -->
+    <link rel="stylesheet" href="css/jquery.countdown.css"/>
+    <!-- Countdown-CSS -->
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all"/>
+    <!-- Style-CSS -->
+    <!-- //css files -->
+    <!-- web-fonts -->
+    <link href="//fonts.googleapis.com/css?family=Norican&amp;subset=latin-ext" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Voltaire" rel="stylesheet">
+
+    <link href="css/agency.min.css" rel="stylesheet">
+    <style>
+        fieldset {
+            width: 1240px;
+            height: 720px;
+            grid-auto-rows: auto;
+            grid-auto-columns: auto;
+            padding: 10px;
+            border: 10px solid orange
+        }
+
+    </style>
+    <!--<script>
+        $(document).ready(function () {
+            $('.slider').bxSlider();
+        });
+    </script>-->
+</head>
+<body id="page-top">
+
+<br/>
+<br/>
+
+<!--header-->
+<div class="w3l-agile">
+
+    <h2>
+        그동안<span> 지나온 </span>지하철 <span>환승역 </span> 정보들
+    </h2>
+    <br/>
+</div>
+<!--//header-->
+<!-- content -->
+<div class="main-content-agile">
+
+    <br/>
+
+</div>
+<br/>
+<hr/>
+<br/>
+<div class="sub-main-w3">
+    <div class="form-inline">
+        <input class="form-control mr-sm-2" placeholder="역 조회하기" name="find_station" id="find_station"
+               type="text" required="">
+        <button class="btn-info" id="btn_find_station">조회하기</button>
+    </div>
+
+    <br/>
+    <br/>
+    <script>
+        $("#btn_find_station").on('click', function () {
+            var find_station = $("#find_station").val();
+            $.ajax({
+                url: '/info/search',
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    SubNm: find_station
+                },
+                success: function (data) {
+                    window.location.href = "/info?" + "SubNm=" + data[0].SubNm;
+                }, error: function (req, status, error) {
+                    console.log(error);
+                }
+            })
+        })
+    </script>
+
+</div>
+<div class="row table-responsive">
+    <table id="muui-table-1" width="70%" class="table table-bordered table-hover text-center">
+        <thead>
+        <tr class="muui_table_tr">
+            <th class="thead-dark">No.</th>
+            <th class="thead-dark">현재역 노선</th>
+            <th class="thead-dark">현재역 이름</th>
+            <th class="thead-dark">환승역 호선</th>
+            <th class="thead-dark">환승역 방향</th>
+        </tr>
+        </thead>
+        <tbody>
+        <%
+        if(transfer.length == 0){
+            // empty
+        %>
+        <tr>
+            <td>0</td>
+            <td>입력된 정보가 없습니다.</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <%
+        } else {
+        %>
+        <% for(var i = 0;i < transfer.length;i++){
+        %>
+        <tr class="muui_table_tr">
+            <td class="muui_table_td"><%= (i + 1) %></td>
+            <td class="muui_table_td"><%= transfer[i].SubLine %></td>
+            <td class="muui_table_td"><%= transfer[i].SubNm %></td>
+            <td class="muui_table_td"><%= transfer[i].TransferLine %></td>
+            <td class="muui_table_td"><%= transfer[i].TransferDir %></td>
+        </tr>
+        <%
+        }
+        } %>
+        </tbody>
+    </table>
+</div>
+
+
+<br>
+<br>
+
+
+<!-- js -->
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+
+<!-- Countdown-Timer-JavaScript -->
+<script src="js/simplyCountdown.js"></script>
+<!-- easy to customize -->
+
+<br>
+
+<script>
+
+
+    $("#muui-table-1 tr").click(function () {
+
+        // 현재 클릭된 Row(<tr>)
+        var tr = $(this);
+        var td = tr.children();
+
+        var allData = {
+            "SubLine": td.eq(1).text(), "SubNm": td.eq(2).text()
+            , "TransferLine": td.eq(3).text(), "TransferDir": td.eq(4).text()
+        };
+
+        console.log(allData);
+        $.ajax({
+            url: "/info",
+            type: "POST",
+            data: {
+                SubLine: allData.SubLine,
+                SubNm: allData.SubNm,
+                TransferLine: allData.TransferLine,
+                TransferDir: allData.TransferDir
+            },
+            success: function (data) {
+                if (confirm("선택한 역의 환승 정보를 확인하시겠습니까?")) {
+                    console.log("detail : " + JSON.stringify(data));
+                    window.location = "/detail?" + "SubLine=" + data.SubLine
+                        + "&SubNm=" + data.SubNm + "&TransferLine=" + data.TransferLine
+                        + "&TransferDir=" + data.TransferDir;
+                    //window.location.href = "/detail";
+                } else {
+                    location.reload();
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.error(textStatus + ":" + errorThrown);
+
+            }
+        });
+    });
+
+</script>
+</body>
+</html>

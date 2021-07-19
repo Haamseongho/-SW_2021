@@ -1,0 +1,362 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+    <title><%= TransData[0].SubNm %> 환승정보 페이지</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <style>
+
+        <!--
+
+        -->
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial;
+        }
+
+        .header {
+            text-align: center;
+            padding: 32px;
+        }
+
+        .row {
+            display: -ms-flexbox; /* IE10 */
+            display: flex;
+            -ms-flex-wrap: wrap; /* IE10 */
+            flex-wrap: wrap;
+            padding: 0 4px;
+        }
+
+        /* Create four equal columns that sits next to each other */
+        .column {
+            -ms-flex: 25%; /* IE10 */
+            flex: 25%;
+            max-width: 25%;
+            padding: 0 4px;
+        }
+
+        .column img {
+            margin-top: 8px;
+            vertical-align: middle;
+        }
+
+        /* Responsive layout - makes a two column-layout instead of four columns */
+        @media screen and (max-width: 800px) {
+            .column {
+                -ms-flex: 50%;
+                flex: 50%;
+                max-width: 50%;
+            }
+        }
+
+        /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+        @media screen and (max-width: 600px) {
+            .column {
+                -ms-flex: 100%;
+                flex: 100%;
+                max-width: 100%;
+            }
+        }
+
+        .label {
+            width: 300px;
+            background-color: #fffccc;
+            text-align: match-parent;
+            border: 1px solid #ccccff;
+        }
+
+        .elements {
+            border: 1px solid #fffde7;
+            padding: 10px;
+            border: 1px solid #ffd8ca;
+            width: 400px;
+        }
+
+        button {
+            margin: 20px;
+        }
+    </style>
+</head>
+<body class="is-preload">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+        <div class="inner">
+
+            <!-- Header -->
+            <header id="header">
+                <a href="#" class="logo"><h2><strong><%= TransData[0].SubNm %> 환승정보</strong></h2></a>
+                <ul class="icons">
+                    <li><a href="https://www.facebook.com/wearemuui/" class="icon fa-facebook"><span class="label">Facebook</span></a>
+                    </li>
+                    <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+                </ul>
+            </header>
+
+            <!-- Banner -->
+            <section id="banner">
+                <div class="content">
+                    <a href="https://www.wearemuui.com/" target="_blank"><p>wearemuui</p></a>
+                    <header>
+                        <h4>현재 위치한 역 </h4>
+                        <h2>
+                            <stong><%= TransData[0].SubNm %></stong>
+                        </h2>
+                        <hr/>
+                        <h4>환승해서 가는 역</h4>
+                        <h2><strong><%= TransData[0].TransferDir %></strong></h2>
+                    </header>
+                    <hr/>
+                    <p><strong>현재역 호선</strong><h4><%= TransData[0].SubLine %></h4></p>
+                    <p><strong>환승역 호선</strong><h4><%= TransData[0].TransferLine %></h4></p>
+                    <hr/>
+                    <div class="container-fluid">
+                        환승하기 편한 플랫폼 : <%= TransData[0].PlatSpot %> <br/>
+                        <p>환승하는데 걸리는 시간 : <%= TransData[0].Time %></p>
+                    </div>
+                    <hr/>
+                    <hr/>
+
+                    <h2>추가정보 확인</h2>
+
+                    <!-- 환승경로 체크 -->
+                    <div class="section1">
+                        <table>
+                            <tr>
+                                <td>
+                                    <button class="label" id="btnChkElevData">엘리베이터 정보 확인하기</button>
+                                    <button class="label" id="btnChkLiftData">리프트 정보 확인하기</button>
+                                    <button class="label" id="btnChkTransData">환승경로 확인하기</button>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+
+                    <div id="section1_elev" class="elements" hidden="hidden">
+                        <table class="table-bordered table-hover table-primary">
+                            <% for(var i = 0;i < TransData[0].Elevator.length;i++) {
+                            %>
+                            <tr class="table-responsive-lg table-responsive-md table-responsive-sm">
+                                <td class="table-responsive-sm table-responsive-md table-responsive-lg">
+                                    <h3><strong>엘리베이터 위치</strong></h3>
+                                    <p><%= TransData[0].Elevator[i].ElevLocation %></p>
+                                    <h3><strong>엘리베이터 이름(유형)</strong></h3>
+                                    <p><%= TransData[0].Elevator[i].ElevName %></p>
+                                    <h3><strong>사용가능여부</strong></h3>
+                                    <p><%= TransData[0].Elevator[i].ElevUsage %></p>
+                                    <h3><strong>엘리베이터 이동방향</strong></h3>
+                                    <p><%= TransData[0].Elevator[i].ElevDir %></p>
+                                </td>
+                            </tr>
+                            <%
+                            } %>
+
+                        </table>
+                    </div>
+                    <div id="section1_lift" class="elements" hidden="hidden">
+                        <table class="table-bordered table-hover table-primary">
+                            <% for(var i = 0;i < TransData[0].Lift.length;i++) {
+                            %>
+                            <tr class="table-responsive-lg table-responsive-md table-responsive-sm">
+                                <td class="table-responsive-sm table-responsive-md table-responsive-lg">
+                                    <h3><strong>리프트 위치</strong></h3>
+                                    <p><%= TransData[0].Lift[i].LiftLocation %></p>
+                                    <h3><strong>리프트 이름(유형)</strong></h3>
+                                    <p><%= TransData[0].Lift[i].LiftName %></p>
+                                    <h3><strong>사용가능여부</strong></h3>
+                                    <p><%= TransData[0].Lift[i].LiftUsage %></p>
+                                    <h3><strong>리프트 이동방향</strong></h3>
+                                    <p><%= TransData[0].Lift[i].LiftDir %></p>
+                                </td>
+                            </tr>
+                            <%
+                            } %>
+
+                        </table>
+                    </div>
+                    <div id="section1_trans" class="elements" hidden="hidden">
+
+                        <h3>처음 출발위치 : <%= TransData[0].Direction[0].Start %></h3><br/>
+                        <h3>최종목적지 : <%= TransData[0].Direction[0].Dest %></h3><br/>
+                        <hr/>
+                        <%
+                        for(var i = 0;i < TransData[0].Direction.length;i++){
+                        %>
+                        <strong>출발위치</strong> : <%= TransData[0].Direction[i].Spot %><br/>
+                        <strong>이동방향 </strong>: <%= TransData[0].Direction[i].Turn %><br/>
+                        <strong>이동거리</strong> : <%= TransData[0].Direction[i].Dist %><br/>
+                        <strong>도착위치</strong> : <%= TransData[0].Direction[i].Feature %><br/>
+                        <strong>행동</strong> : <%= TransData[0].Direction[i].Todo %><br/>
+                        <hr/>
+                        <i><h4>자세한 경로(참고)</h4></i><br/> <h5><%= TransData[0].Direction[i].D_Feature_A %></h5><br/>
+                        <i><h4>유의사항</h4></i><br/> <h5> <%= TransData[0].Direction[i].D_Feature_B %></h5> <br/>
+                        <hr/>
+                        <%
+                        }
+                        %>
+                        <%
+                                                      %>
+                    </div>
+                    <hr/>
+
+
+                    <%
+                    if(TransData.user_id != undefined){
+                    %>
+                    <h2>정보 수정</h2>
+                    <hr/>
+                    <div class="section2">
+                        <button class="btn-outline-danger" id="btnUpdateTransElev">엘리베이터 정보 수정하기</button>
+                    </div>
+                    <div class="section3">
+                        <button class="btn-outline-danger" id="btnUpdateTransLift">리프트 정보 수정하기</button>
+                    </div>
+                    <div class="section4">
+                        <button class="btn-outline-danger" id="btnUpdateTransDir">환승경로 정보 수정하기</button>
+                    </div>
+
+                    <%
+                    }
+                    %>
+
+                    <script>
+                        $("#btnUpdateTransElev").on('click', function () {
+                            $.ajax({
+                                url: "/correct/search",
+                                type: "post",
+                                dataType: "json",
+                                data: {
+                                    SubNm: "<%= TransData[0].SubNm %>",
+                                    TransferDir: "<%= TransData[0].TransferDir %>"
+                                },
+                                success: function (data) {
+                                    window.location.href = "/correct/elevInfo?" + "SubNm=" + data[0].SubNm
+                                        + "&TransferDir=" + data[0].TransferDir;
+                                }, error: function (error) {
+                                    alert("에러가 발생하였습니다.");
+                                    window.location.href = "/error";
+                                }
+                            })
+                        })
+
+                    </script>
+                    <script>
+                        $("#btnUpdateTransLift").on("click", function () {
+                            $.ajax({
+                                url: "/correct/search",
+                                type: "post",
+                                dataType: "json",
+                                data: {
+                                    SubNm: "<%= TransData[0].SubNm %>",
+                                    TransferDir: "<%= TransData[0].TransferDir %>"
+                                },
+                                success: function (data) {
+                                    window.location.href = "/correct/liftInfo?" + "SubNm=" + data[0].SubNm
+                                        + "&TransferDir=" + data[0].TransferDir;
+                                }, error: function (error) {
+                                    console.log("보내는 것 부터 에러야");
+                                    window.location.href = "/error";
+                                }
+                            })
+                        })
+                    </script>
+                    <script>
+                        $("#btnUpdateTransDir").on("click", function () {
+                            $.ajax({
+                                url: "/correct/search",
+                                type: "post",
+                                dataType: "json",
+                                data: {
+                                    SubNm: "<%= TransData[0].SubNm %>",
+                                    TransferDir: "<%= TransData[0].TransferDir %>"
+                                },
+                                success: function (data) {
+                                    window.location.href = "/correct/transInfo?" + "SubNm=" + data[0].SubNm
+                                        + "&TransferDir=" + data[0].TransferDir;
+                                }, error: function (error) {
+                                    console.log("보내는 것 부터 에러야");
+                                    window.location.href = "/error";
+                                }
+                            })
+                        })
+                    </script>
+
+                </div>
+
+                <!-- 환승 내용 확인 스크립트 -->
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $("#btnChkTransData").click(function () {
+                            console.log("click");
+                            $("#section1_trans").toggle();
+                        })
+                    })
+                </script>
+                <!-- 엘리베이터 내용 확인 스크립트 -->
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $("#btnChkElevData").click(function () {
+                            console.log("click");
+                            $("#section1_elev").toggle();
+                        })
+                    })
+                </script>
+                <!-- 리프트 내용 확인 스크립트 -->
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $("#btnChkLiftData").click(function () {
+                            console.log("click");
+                            $("#section1_lift").toggle();
+                        })
+                    })
+                </script>
+                <%
+                for(var i = 0;i < TransData.ImagePath.length;i++){
+                %>
+                <% if(i < 5) {
+                %>
+                <div class="column">
+                    <img src="<%= TransData.ImagePath[i] %>" style="width:100%">
+                </div>
+                <%
+                } %>
+                <br/>
+                <hr/>
+                <br/>
+
+                <% }
+                %>
+
+            </section>
+        </div>
+    </div>
+
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>

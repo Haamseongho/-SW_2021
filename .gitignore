@@ -102,3 +102,10 @@ dist
 
 # TernJS port file
 .tern-port
+
+# authdata
+.idea
+*.log
+*.bak
+auth_user_data/
+

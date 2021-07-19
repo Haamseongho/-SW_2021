@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html xmlns:height="http://www.w3.org/1999/xhtml">
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap core CSS -->
+
+
+    <!-- Custom styles for this template -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/css/bootstrap-select.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
+
+</head>
+<style>
+    select {
+        width: 200px; /* 원하는 너비설정 */
+        padding: .8em .5em; /* 여백으로 높이 설정 */
+        font-family: inherit; /* 폰트 상속 */
+        background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%; /* 네이티브 화살표 대체 */
+        border: 1px solid #999;
+        border-radius: 0px; /* iOS 둥근모서리 제거 */
+        -webkit-appearance: none; /* 네이티브 외형 감추기 */
+        -moz-appearance: none;
+        appearance: none;
+    }
+
+    .selectbox {
+        position: relative;
+        width: 200px; /* 너비설정 */
+        border: 1px solid #999; /* 테두리 설정 */
+        z-index: 1;
+    }
+
+    .selectbox:before { /* 화살표 대체 */
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 15px;
+        width: 0;
+        height: 0;
+        margin-top: -1px;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid #333;
+    }
+
+    .selectbox label {
+        position: absolute;
+        top: 1px; /* 위치정렬 */
+        left: 5px; /* 위치정렬 */
+        padding: .8em .5em; /* select의 여백 크기 만큼 */
+        color: #999;
+        z-index: -1; /* IE8에서 label이 위치한 곳이 클릭되지 않는 것 해결 */
+    }
+
+    .selectbox select {
+        width: 100%;
+        height: auto; /* 높이 초기화 */
+        line-height: normal; /* line-height 초기화 */
+        font-family: inherit; /* 폰트 상속 */
+        padding: .8em .5em; /* 여백과 높이 결정 */
+        border: 0;
+        opacity: 0; /* 숨기기 */
+        filter: alpha(opacity=0); /* IE8 숨기기 */
+        -webkit-appearance: none; /* 네이티브 외형 감추기 */
+        -moz-appearance: none;
+        appearance: none;
+    }
+
+
+</style>
+<body>
+<div id="box">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container" id="mn_header">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"> 관리자 환승정보 입력페이지 </a>
+            </div>
+
+            <hr/>
+
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/"> 뒤로가기 </a>
+            </div>
+        </div>
+    </nav>
+    <br/>
+    <br/>
+
+
+    <div class="container" id="mn_container">
+        <table>
+            <tr>
+                <td style="padding-right:30px">
+                    <div class="selectbox">
+                        <select class="selectpicker" id="sBox" data-style="btn-success">
+                            <option selected>(현재 이용 역)호선</option>
+                            <option value="1호선">1호선</option>
+                            <option value="2호선">2호선</option>
+                            <option value="3호선">3호선</option>
+                            <option value="4호선">4호선</option>
+                            <option value="5호선">5호선</option>
+                            <option value="6호선">6호선</option>
+                            <option value="7호선">7호선</option>
+                            <option value="8호선">8호선</option>
+                            <option value="9호선">9호선</option>
+                            <option value="경의중앙선">경의중앙선</option>
+                            <option value="분당선">분당선</option>
+                            <option value="신분당선">신분당선</option>
+                            <option value="공항철도">공항철도</option>
+                            <option value="우이신설동">우이신설동</option>
+                            <option value="경춘선">경춘선</option>
+                        </select>
+                    </div>
+                </td>
+                <td style="padding-right:30px">
+                    <div class="selectbox">
+                        <select class="selectpicker" id="sBox2" data-style="btn-warning">
+                            <option selected>(환승할 역)호선</option>
+                            <option value="1호선">1호선</option>
+                            <option value="2호선">2호선</option>
+                            <option value="3호선">3호선</option>
+                            <option value="4호선">4호선</option>
+                            <option value="5호선">5호선</option>
+                            <option value="6호선">6호선</option>
+                            <option value="7호선">7호선</option>
+                            <option value="8호선">8호선</option>
+                            <option value="9호선">9호선</option>
+                            <option value="경의중앙선">경의중앙선</option>
+                            <option value="분당선">분당선</option>
+                            <option value="신분당선">신분당선</option>
+                            <option value="공항철도">공항철도</option>
+                            <option value="우이신설동">우이신설동</option>
+                            <option value="경춘선">경춘선</option>
+                        </select>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <br/>
+        <div class="form-group">
+            <p>역 이름</p> <input type="text" name="SubNm" class="form-control" placeholder="역 이름" id="SubNm">
+        </div>
+
+        <div class="form-group">
+            <p>환승 방향</p> <input type="text" name="TransferDir" placeholder="환승 방향 (~행)" class="form-control"
+                                id="TransferDir">
+        </div>
+
+        <div class="form-group">
+            <p>환승하기 가장 가까운 플랫폼</p> <input type="text" name="PlatSpot"
+                                          id="PlatSpot" placeholder="환승역으로의 최단 플랫폼위치" class="form-control">
+        </div>
+        <div class="form-group">
+            <p>시간</p><input type="text" name="Time" id="Time" placeholder="환승하는 동안 걸리는 시간" class="form-control">
+        </div>
+
+        <!-- 엘리베이터 & 리프트 -->
+
+        <div>
+            <table class="table table-dark table-bordered table-hover text-center" id="myElevTable" cellpadding="3">
+                <th colspan="6" width="100%">엘레베이터 정보 입력</th>
+
+                <tr>
+                    <td><p>위치</p><input type="text" name="ElevLocation0" id="ElevLocation0"
+                                        placeholder="엘리베이터 위치 입력"></td>
+                    <td><p>엘리베이터 이름</p><input type="text" name="ElevName0" id="ElevName0"
+                                              placeholder="예 : 로프식 B3"></td>
+
+                    <td><p>사용 가능</p><input type="text" name="ElevUsage0" id="ElevUsage0"
+                                           placeholder="사용 가능(0:가능,1:공사중,2:이전중)"></td>
+                </tr>
+                <tr>
+                    <td colspan="10"><p>이동방향</p><input type="text" name="ElevDir0" id="ElevDir0"
+                                                       placeholder="B3에서 B2로 이동"></td>
+
+                </tr>
+
+                <tbody>
+
+                </tbody>
+            </table>
+            <button style="width:100% ; height:50px" class="btn-info" value="btn_add_Elev" id="btn_add_Elev"
+                    onclick="addElevInfo()">엘레베이터 추가
+            </button>
+            <br/>
+            <table class="table table-danger table-bordered text-center" id="myLiftTable" cellpadding="3">
+                <th colspan="5" width="80%">리프트 정보입력</th>
+
+                <tr>
+                    <td><p>위치</p><input type="text" name="LiftLocation0" id="LiftLocation0"
+                                        placeholder="리프트 위치 입력"></td>
+                    <td><p>리프트 이름</p><input type="text" name="LiftName0" id="LiftName0"
+                                            placeholder="예: 로프식 B2"></td>
+                    <td><p>사용가능</p><input type="text" name="LiftUsage0" id="LiftUsage0"
+                                          placeholder="사용 가능(0:가능,1:공사중,2:이전중)"></td>
+                </tr>
+                <tr>
+                    <td colspan="10"><p>이동방향</p><input type="text" name="LiftDir0" id="LiftDir0"
+                                                       placeholder="B3에서 B2로 이동"></td>
+                </tr>
+                <tbody>
+
+                </tbody>
+
+            </table>
+            <button style="width:100% ; height:50px" class="btn-info" value="btn_add_Lift" id="btn_add_Lift"
+                    onclick="addLiftInfo()">리프트 추가
+            </button>
+            <br/>
+            <br/>
+            <table class="table table-striped table-bordered text-center" id="myDirectionTable">
+                <th colspan="6" width="100%">거리</th>
+                <div class="container">
+                    <div class="form-group">
+                        <tr>
+                            <td><p>처음 출발위치</p><input type="text" name="Start0" id="Start0"
+                                                     placeholder="출발할 나의 위치(ex: 2번출구 / 3F.2호선 승강장)"></td>
+                            <td><p>최종목적지</p><input type="text" name="Dest0" id="Dest0"
+                                                   placeholder="최종목적지(ex:9호선 승강장)"></td>
+                        </tr>
+                        <!-- 추가할 정보들 -->
+                        <tr>
+                            <td><p>출발위치</p><input type="text" name="Spot0" id="Spot0"
+                                                  placeholder="현재 위치(ex:지하 1층 2호선 대합실)"></td>
+                            <td><p>방향</p><input type="text" name="Turn0" id="Turn0" placeholder="몇 시 방향인지 입력"></td>
+                            <td><p>거리</p><input type="text" name="Dist0" id="Dist0" placeholder="몇 M 이동하는지 입력"></td>
+                        </tr>
+                        <tr>
+                            <td><p>도착위치</p><input type="text" name="Feature0" id="Feature0"
+                                                  placeholder="주변 지형지물(ex: 엘리베이터)"></td>
+                            <td><p>행위</p><input type="text" name="Todo0" id="Todo0" placeholder="행위(ex: 이동 , 탑승)"></td>
+                        </tr>
+                    </div>
+                    <div class="form-group">
+                        <tr>
+                            <div class="form-group">
+                                <td colspan="3"><p>자세한 경로(참고)</p><textarea class="form-control"
+                                                                           rows="5" name="D_Feature_A0"
+                                                                           id="D_Feature_A0"
+                                                                           placeholder="이동사항 구체적 설명1"></textarea></td>
+
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="form-group">
+                                <td colspan="3"><p>특이사항/유의사항</p><textarea class="form-control"
+                                                                          rows="5" name="D_Feature_B0" id="D_Feature_B0"
+                                                                          placeholder="이동사항 구체적 설명2"></textarea></td>
+
+                            </div>
+                        </tr>
+                    </div>
+
+                </div>
+                <tbody>
+
+                </tbody>
+            </table>
+            <button style="width:100% ; height:50px" class="btn-info" value="btn_add_Direction" id="btn_add_Direction"
+                    onclick="addDirectionInfo()">환승 과정 추가하기
+            </button>
+            <br/>
+            <hr/>
+
+            <!--  이미지 팝업 -->
+            <input type="button" value="경로이미지 업로드" class="btn-warning" style="width:100%"
+                   onclick="imgShowPopup();">
+
+        </div>
+
+
+        <button id="btnData" class="btn-warning" style="width:100%">데이터 입력</button>
+    </div>
+
+</div>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script type="text/javascript">
+
+    var new_data_elev_size = 0;
+    var new_data_lift_size = 0;
+    var new_data_dir_size = 0;
+
+    function imgShowPopup() {
+        window.open("/popup_image", "경로이미지 업로드", "width=800, height=500, " +
+            "left=100, top=50");
+    }
+
+    function addElevInfo() {
+
+        new_data_elev_size++;
+
+        var elevLoc = $("<input>").attr("type", "text").attr('id', 'ElevLocation' + new_data_elev_size).attr("placeholder", "엘리베이터 위치 입력");
+        var elevNm = $("<input>").attr("type", "text").attr('id', 'ElevName' + new_data_elev_size).attr("placeholder", "엘리베이터 이름 입력");
+        var elevUsage = $("<input>").attr("type", "text").attr('id', 'ElevUsage' + new_data_elev_size).attr("placeholder", "엘리베이터 사용가능 여부");
+        var elevDir = $("<input>").attr("type", "text").attr('id', 'ElevDir' + new_data_elev_size).attr("placeholder", "엘리베이터 이동방향");
+
+
+        $("#myElevTable  > tbody:last")
+            .append($('<tr>').attr("id", "elevTable" + new_data_elev_size)
+                .append($('<td>').append($(elevLoc)))
+                .append($('<td>').append($(elevNm)))
+                .append($('<td>').append($(elevUsage))))
+            .append($('<tr>'))
+            .append($('<td>').attr("colspan", "7").append($(elevDir)))
+            .append($('<br />'));
+
+    }
+
+
+    function addLiftInfo() {
+
+        new_data_lift_size++;
+
+        var liftLoc = $("<input>").attr("type", "text").attr('id', 'LiftLocation' + new_data_lift_size).attr("placeholder", "리프트 위치 입력");
+        var liftNm = $("<input>").attr("type", "text").attr('id', 'LiftName' + new_data_lift_size).attr("placeholder", "리프트 이름 입력");
+        var liftUsage = $("<input>").attr("type", "text").attr('id', 'LiftUsage' + new_data_lift_size).attr("placeholder", "리프트 사용가능 여부");
+        var liftDir = $("<input>").attr("type", "text").attr('id', 'LiftDir' + new_data_lift_size).attr("placeholder", "리프트 이동방향");
+
+
+        $("#myLiftTable  > tbody:last")
+            .append($('<tr>').attr("id", "liftTable" + new_data_lift_size)
+                .append($('<td>').append($(liftLoc)))
+                .append($('<td>').append($(liftNm)))
+                .append($('<td>').append($(liftUsage))))
+            .append($('<tr>'))
+            .append($('<td>').attr("colspan", "7").append($(liftDir)))
+            .append($('<br />'));
+
+    }
+
+    function addDirectionInfo() {
+
+
+        new_data_dir_size++;
+
+        var turn = $("<input>").attr("type", "text").attr('id', 'Turn' + new_data_dir_size).attr("placeholder", "이동방향 입력");
+        var dist = $("<input>").attr("type", "text").attr('id', 'Dist' + new_data_dir_size).attr("placeholder", "이동거리 입력");
+        var spot = $("<input>").attr("type", "text").attr('id', 'Spot' + new_data_dir_size).attr('placeholder', "현재 위치 입력");
+        var feature = $("<input>").attr("type", "text").attr('id', 'Feature' + new_data_dir_size).attr('placeholder', "지형지물 입력");
+        var todo = $("<input>").attr("type", "text").attr('id', 'Todo' + new_data_dir_size).attr('placeholder', '행위(ex: 이동 , 탑승)');
+
+        var d_feature1 = $("<input>").attr("type", "textarea").attr('id', 'D_Feature_A' + new_data_dir_size)
+            .attr("placeholder", "이동사항 구체적으로 입력1").attr('class', 'form-control').attr("rows", "5");
+        var d_feature2 = $("<input>").attr("type", "textarea").attr('id', 'D_Feature_B' + new_data_dir_size)
+            .attr("placeholder", "이동사항 구체적으로 입력2").attr("class", "form-control").attr("rows", "5");
+
+        $("#myDirectionTable > tbody:last")
+            .append($('<tr>').attr("id", "DirTable" + new_data_dir_size).attr("class", "table table-bordered text-center")
+                .append($('<td>').append($(spot)))
+                .append($('<td>').append($(turn)))
+                .append($('<td>').append($(dist))))
+            .append($('<tr>').attr("class", "table table-bordered text-center")
+                .append($('<td>').append($(feature)))
+                .append($('<td>').append($(todo)))
+            )
+            .append($('<tr>').attr("class", "table table-bordered text-center")
+                .append($('<td>').attr("colspan", "7").css({width: 300, height: 70}).append($(d_feature1))))
+            .append($('<tr>').attr('class', "table table-brodered text-center")
+                .append($('<td>').attr("colspan", "7").css("height", 70).append($(d_feature2))))
+            .append($('<br />'));
+    }
+
+    $("document").ready(function () {
+
+        $("#btnData").click(function () {
+
+            // 엘리베이터 정보 입력
+            let SubNm = $("#SubNm").val(); // 현재 역의 이름
+            let SubLine = $("#sBox").val(); // 현재 이용역 호선
+            let TransferLine = $("#sBox2").val(); // 환승할 역의 호선
+            let TransferDir = $("#TransferDir").val(); // 환승역 방향
+            let PlatSpot = $("#PlatSpot").val();
+            let Time = $("#Time").val();
+            let Start = $("#Start0").val(); // 환승시 처음 시작 위치
+            let Dest = $("#Dest0").val();  // 환승시 최종 목적지
+
+
+            // elev~~Arr : elevObject에 배열 형태로 넣기 위해 만드는 배열들
+            var elevLocArr = new Array();
+            var elevNmArr = new Array();
+            var elevUseArr = new Array();
+            var elevDirArr = new Array();
+            // 엘리베이터 요소들 저장한거 배열로 관리
+            var elevObjectArr = new Array();
+
+            for (var i = 0; i <= new_data_elev_size; i++) {
+                var elemLoc = $("#ElevLocation" + i).val();
+                var elemName = $("#ElevName" + i).val();
+                var elemUsage = $("#ElevUsage" + i).val();
+                var elemDir = $("#ElevDir" + i).val();
+
+                elevLocArr.push(elemLoc);
+                elevNmArr.push(elemName);
+                elevUseArr.push(elemUsage);
+                elevDirArr.push(elemDir);
+            }
+            for (var i = 0; i <= new_data_elev_size; i++) {
+                var elevObject = new Object();
+                elevObject.ElevLocation = elevLocArr[i];
+                elevObject.ElevName = elevNmArr[i];
+                elevObject.ElevUsage = elevUseArr[i];
+                elevObject.ElevDir = elevDirArr[i];
+
+                elevObjectArr.push(elevObject);
+            }
+
+
+            // 리프트 작업 진행합니다.
+            // 리프트
+            var LiftLocArr = new Array();
+            var LiftNmArr = new Array();
+            var LiftUseArr = new Array();
+            var LiftDirArr = new Array();
+            // 리프트 요소들 저장한거 배열로 관리
+            var liftObjectArr = new Array();
+
+
+            for (var i = 0; i <= new_data_lift_size; i++) {
+                var elemLoc = $("#LiftLocation" + i).val();
+                var elemName = $("#LiftName" + i).val();
+                var elemUsage = $("#LiftUsage" + i).val();
+                var elemDir = $("#LiftDir" + i).val();
+
+                LiftLocArr.push(elemLoc);
+                LiftNmArr.push(elemName);
+                LiftUseArr.push(elemUsage);
+                LiftDirArr.push(elemDir);
+            }
+
+            for (var i = 0; i <= new_data_lift_size; i++) {
+                var liftObject = new Object();
+                liftObject.LiftLocation = LiftLocArr[i];
+                liftObject.LiftName = LiftNmArr[i];
+                liftObject.LiftUsage = LiftUseArr[i];
+                liftObject.LiftDir = LiftDirArr[i];
+
+                liftObjectArr.push(liftObject);
+            }
+
+            for (var i = 0; i < liftObjectArr.length; i++) {
+                console.log(JSON.stringify(liftObjectArr[i]));
+            }
+
+
+            // Direction 정리
+            var TurnArr = new Array();
+            var DistArr = new Array();
+            var FeatureArr = new Array(); // 지형지물
+            var SpotArr = new Array(); // 현재 위치
+            var TodoArr = new Array(); // 행위
+            var D_Feature1_Arr = new Array(); // D_Feature_A - Array
+            var D_Feature2_Arr = new Array(); // D_Feature_B - Array
+
+            // 배열 먼저 넣고
+            for (var i = 0; i <= new_data_dir_size; i++) {
+                var elemTurn = $("#Turn" + i).val();
+                var elemDist = $("#Dist" + i).val();
+                var elemFeature = $("#Feature" + i).val();
+                var elemSpot = $("#Spot" + i).val();
+                var elemTodo = $("#Todo" + i).val();
+                var elemD_Feat1 = $("#D_Feature_A" + i).val();
+                var elemD_Feat2 = $("#D_Feature_B" + i).val();
+
+                TurnArr.push(elemTurn);
+                DistArr.push(elemDist);
+                FeatureArr.push(elemFeature);
+                SpotArr.push(elemSpot);
+                TodoArr.push(elemTodo);
+                D_Feature1_Arr.push(elemD_Feat1);
+                D_Feature2_Arr.push(elemD_Feat2);
+            }
+
+            var dirObjectArr = [];
+            // 배열에 내용을 객체에 넣고
+            // 객체에 내용을 배열에 다시 넣는다.
+            for (var i = 0; i <= new_data_dir_size; i++) {
+                var dirObject = new Object();
+                dirObject.Turn = TurnArr[i];
+                dirObject.Dist = DistArr[i];
+                dirObject.Spot = SpotArr[i];
+                dirObject.Feature = FeatureArr[i];
+                dirObject.Todo = TodoArr[i];
+                dirObject.D_Feature_A = D_Feature1_Arr[i];
+                dirObject.D_Feature_B = D_Feature2_Arr[i];
+                dirObject.Start = Start;
+                dirObject.Dest = Dest;
+                dirObjectArr.push(dirObject);
+            }
+            // 출발 지점 , 도착 지점 넣기
+
+            var elevJsonData = JSON.stringify(elevObjectArr);
+            var liftJsonData = JSON.stringify(liftObjectArr);
+            var dirJsonData = JSON.stringify(dirObjectArr);
+
+            $.ajax({
+                url: "/report",
+                type: "POST",
+                contentType: "application/x-www-form-urlencoded",
+                async: true,
+                cache: false,
+                dataType: "json",
+                traditional: true,
+                data: {
+                    SubNm: SubNm,
+                    SubLine: SubLine,
+                    TransferLine: TransferLine,
+                    TransferDir: TransferDir,
+                    PlatSpot: PlatSpot,
+                    Time: Time,
+                    Elevator: elevJsonData,
+                    Lift: liftJsonData,
+                    Direction: dirJsonData,
+                },
+                success: function (data) {
+                    if (confirm("데이터 저장이 완료되었습니다. 현재 페이지에 머무시겠습니까?")) {
+                        window.location.reload();
+                    } else {
+                        window.location.href = "/info";
+                    }
+                },
+                error: function (req, status, error) {
+                    alert("error " + error);
+                }
+            })
+        })
+    })
+</script>
+</body>
+
+</html>

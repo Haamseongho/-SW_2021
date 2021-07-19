@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>경로 이미지 올리는 팝업</title>
+</head>
+<body>
+<form action="/report/v1/upload" method="post" enctype="multipart/form-data">
+    <table class="table table-striped table-bordered text-center" id="myImageTable">
+        <th colspan="6" width="100%">환승 경로 사진 올리기</th>
+        <tr>
+            <td colspan="10">
+                환승 출발역: <input type="text" name="img_SubNm" id="img_SubNm"><br/>
+                환승 도착역: <input type="text" name="img_TransferDir" id="img_TransferDir"><br/>
+                <hr />
+                환승 경로 이미지 등록: <input type="file" name="imgFiles" id="imgFiles"> <br>
+                <hr/>
+                환승 경로 이미지 등록: <input type="file" name="imgFiles" id="imgFiles"> <br>
+                <hr/>
+                환승 경로 이미지 등록: <input type="file" name="imgFiles" id="imgFiles"> <br>
+                <hr/>
+                환승 경로 이미지 등록: <input type="file" name="imgFiles" id="imgFiles"> <br>
+                <hr/>
+                환승 경로 이미지 등록: <input type="file" name="imgFiles" id="imgFiles"> <br>
+                <hr/>
+
+            </td>
+        </tr>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <button style="width:100% ; height:50px" class="btn-info" value="btn_send_Images" id="btn_send_Images"
+            type="submit">이미지 보내기
+    </button>
+</form>
+<!--
+<button style="width:100% ; height:50px" class="btn-info" value="btn_add_Images" id="btn_add_Images"
+        onclick="addImageInfo()">환승 경로 이미지 추가하기
+</button>-->
+</body>
+<script>
+    var new_image_file_size = 0;
+    function addImageInfo() {
+        alert("눌림" + new_image_file_size);
+        new_image_file_size++;
+        var imgAdd = $("<input>").attr("type", "file").attr("id", "imgFiles").attr("alt", "이미지 등록").attr("name", "imgFiles");
+
+        if (new_image_file_size > 10) {
+            alert("이미지 업로드는 최대 10장까지 가능합니다")
+        } else {
+            $("#myImageTable > tbody:last")
+                .append($('<tr>')).attr("id", "ImageTable" + new_image_file_size)
+                .append($('<td>').append($(imgAdd))
+                )
+        }
+    }
+</script>
+</html>
