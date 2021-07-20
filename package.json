@@ -1,34 +1,32 @@
 {
-  "name": "muui-ver2",
-  "version": "0.0.0",
+  "name": "angel_browser",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "aws-sdk": "^2.384.0",
+    "aws-sdk": "^2.949.0",
+    "body-parser": "^1.19.0",
     "bxslider": "^4.2.14",
-    "cookie-parser": "~1.4.3",
-    "crypto": "^1.0.1",
-    "debug": "~2.6.9",
-    "ejs": "^2.6.1",
-    "express": "~4.16.0",
-    "express-session": "^1.15.6",
-    "firebase": "^5.7.1",
-    "http-errors": "~1.6.2",
-    "local-storage": "^1.4.2",
-    "mongodb": "^3.1.10",
-    "mongoose": "^5.3.14",
-    "morgan": "~1.9.0",
-    "multer": "^1.4.1",
+    "cookie-parser": "^1.4.5",
+    "crypto-js": "^4.0.0",
+    "debug": "^2.6.9",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "http-errors": "^1.6.3",
+    "local-storage": "^2.0.0",
+    "logger": "^0.0.1",
+    "mongodb": "^4.0.0",
+    "mongoose": "^5.13.3",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2",
     "multer-s3": "^2.9.0",
-    "pug": "2.0.0-beta11",
-    "request": "^2.88.0",
+    "query-string": "^7.0.1",
+    "request": "^2.88.2",
     "stringify": "^5.2.0",
-    "body-parser": "latest"
+    "uuid": "^3.4.0",
+    "winston": "^3.3.3"
   }
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> de948dff0d2327702d6ad0a34801e53cb9d6a6af

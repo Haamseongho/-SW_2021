@@ -104,8 +104,5 @@ dist
 .tern-port
 
 # authdata
-.idea
-*.log
-*.bak
 auth_user_data/
 
